@@ -23,9 +23,9 @@ From DDPM
 
 > Diffusion models [53] are latent variable models of the form:
 > $$p_\theta(x_0) := \int p_\theta(x_{0:T})dx_{1:T}$$
-> where $x_1, \ldots, x_T$ are latents of the same dimensionality as the data $x_0 \sim q(x_0)$. The joint distribution $p_\theta(x_{0:T})$ is called the reverse process, and it is defined as a Markov chain with learned Gaussian transitions starting at $p(x_T) = \mathcal{N}(x_T; 0, I)$:
-> $$p_\theta(x_{0:T}) := p(x_T) \prod_{t=1}^T p_\theta(x_{t-1}|x_t) \\ p_\theta(x_{t-1}|x_t) := \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))$$
-> What distinguishes diffusion models from other types of latent variable models is that the approximate posterior $q(x_{1:T}|x_0)$, called the forward process or diffusion process, is fixed to a Markov chain that gradually adds Gaussian noise to the data according to a variance schedule $\beta_1, \ldots, \beta_T$:
+> where \(x*1, \ldots, x_T\) are latents of the same dimensionality as the data \(x_0 \sim q(x_0)\). The joint distribution \(p*\theta(x*{0:T})\) is called the reverse process, and it is defined as a Markov chain with learned Gaussian transitions starting at \(p(x_T) = \mathcal{N}(x_T; 0, I)\):
+> $$p*\theta(x*{0:T}) := p(x_T) \prod*{t=1}^T p*\theta(x*{t-1}|x*t) \\ p*\theta(x*{t-1}|x_t) := \mathcal{N}(x*{t-1}; \mu*\theta(x_t, t), \Sigma*\theta(x*t, t))$$
+> What distinguishes diffusion models from other types of latent variable models is that the approximate posterior \(q(x*{1:T}|x_0)\), called the forward process or diffusion process, is fixed to a Markov chain that gradually adds Gaussian noise to the data according to a variance schedule \(\beta_1, \ldots, \beta_T\):
 >
 > $$
 > q(x_{1:T}|x_0) := \prod_{t=1}^T q(x_t|x_{t-1})\\
@@ -60,7 +60,7 @@ For our data and model, this objective is intractable.
 
 Instead, we'll derive what's commonly known as the [Evidence Lower Bound (ELBO)](https://en.wikipedia.org/wiki/Evidence_lower_bound), a tractable approximation of the log-likelihood. Since it's a lower bound on the log likelihood, maximizing the ELBO indirectly maximizes the log-likelihood.
 
-Let $x$ be our target variable and $z$ be our latent variable.
+Let \(x\) be our target variable and \(z\) be our latent variable.
 
 $$
 \begin{aligned}
