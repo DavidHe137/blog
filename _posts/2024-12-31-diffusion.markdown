@@ -3,7 +3,6 @@ layout: post
 title: "Diffusion Models"
 date: 2024-12-31 5:00:00 -0400
 categories: jekyll update
-usemathjax: true
 ---
 
 <!-- # Why another post on Diffusion
